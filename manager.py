@@ -13,7 +13,7 @@ class GameManager:
 
     def load_highscore(self):
         try:
-            lines = loadStrings("highscore.txt")
+            lines = loadStrings("data/highscore.txt")
             if lines and len(lines) > 0:
                 return int(lines[0])
         except Exception as e:
@@ -42,11 +42,11 @@ class GameManager:
         
         self.obstacles = []
         if self.level == 2:
-            # Przeszkoda ~Ash
+            # Obstacle ~Ash
             for i in range(10, 20):
                 self.obstacles.append(PVector(15, i))
         elif self.level == 3:
-            # Przeszkoda next level ~Ash
+            # Obstacle next level ~Ash
             for i in range(5, 10):
                 self.obstacles.append(PVector(5, i))
                 self.obstacles.append(PVector(25, i))
@@ -71,7 +71,7 @@ class GameManager:
             self.food.pos = self.food.pick_location()
             self.score += 1
             
-            # Nowy level co 5 punktów ~Ash
+            # Next level after reaching 5 points ~Ash
             new_level = (self.score // 5) + 1
             if new_level > self.level:
                 self.level = new_level
